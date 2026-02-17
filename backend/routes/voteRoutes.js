@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+const router = express.Router();
 const User = require("../models/user");
 const Candidate = require("../models/candidate");
 const { jwtAuthMiddleware } = require("../config/jwt");
@@ -44,7 +44,4 @@ router.post("/:candidateID", jwtAuthMiddleware, async (req, res) => {
 });
 
 
-
-app.listen(PORT, () => {
-  console.log(`Feedback Server running on http://localhost:${PORT}`);
-});
+module.exports=router;

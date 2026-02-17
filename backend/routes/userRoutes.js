@@ -1,13 +1,15 @@
 const express = require("express");
+const router=express.Router();
 const User = require("../models/user");
-const {jwtAuthMiddleware,generateToken}=require('../config/jwt');
+const jwtAuthMiddleware = require("../middleware/authMiddleware");
+const { generateToken } = require("../config/jwt");
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static("public"));
+// router.use(cors());
+router.use(express.json());
+router.use(express.static("public"));
 
 // Signup 
-app.post("signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const { name, age, email,mobile,address,aadharCardNumber,password,role,isVoted } = req.body;
     
@@ -18,25 +20,24 @@ app.post("signup", async (req, res) => {
 
     const newUser = new User({ name, age, email,mobile,address,aadharCardNumber,password,role,isVoted });
     await newUser.save();
-    res.status(201).json({ message: "User saved successfully!" });
-
+    console.log("User data saved succesfully. ")
     const payload={
-        id:response.id,
+        id:newUser.id,
     }
     console.log(JSON.stringify(payload));
     const token=generateToken(payload);
     console.log("Token is",token);
 
-    res.status(200).json({response:response,token:token});
+    res.status(200).json({user:newUser,token:token});
 
-  } catch (error) {
+  } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Failed to save User" });
   }
 });
 
 // Login 
-app.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const {aadharCardNumber,password}=req.body;
 
@@ -57,12 +58,11 @@ app.post("/login", async (req, res) => {
 });
 
 //Profile route
-app.get('/profile'.jwtAuthMiddleware,async(req,res)=>{
+router.get('/profile',jwtAuthMiddleware,async(req,res)=>{
     try{
-        const userData=req.user;
-        const userId=userData.id;
+        const userId=req.user.id;
         const user=await User.findById(userId).select("-password");
-        res.status(2000).json({user});
+        res.status(200).json({user});
     }catch(err){
         console.log(err);
             res.status(500).json({ error: "Internal server error" });
@@ -75,7 +75,7 @@ app.get('/profile'.jwtAuthMiddleware,async(req,res)=>{
 
 
 // UPDATE
-app.put("/profile/password", jwtAuthMiddleware,async (req, res) => {
+router.put("/profile/password", jwtAuthMiddleware,async (req, res) => {
   try {
          const userId=req.user;
 
@@ -101,7 +101,4 @@ app.put("/profile/password", jwtAuthMiddleware,async (req, res) => {
 });
 
 
-
-app.listen(PORT, () => {
-  console.log(`Feedback Server running on http://localhost:${PORT}`);
-});
+module.exports=router;
