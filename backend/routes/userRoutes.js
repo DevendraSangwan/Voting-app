@@ -1,29 +1,21 @@
-// require("dotenv").config();
-
 const express = require("express");
-const mongoose = require("mongoose");
-// const cors = require("cors");
 const User = require("../models/user");
-const {jwtAuthMiddleware,generateToken}=require('../jwt');
-const { log } = require("console");
+const {jwtAuthMiddleware,generateToken}=require('../config/jwt');
 
-
-// const app = express();
-// const PORT = 5000;
-
-// app.use(cors());
-// app.use(express.json());
-// app.use(express.static("public"));
-
-// mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log("Feedback DB Connected"))
-//   .catch(err => console.error("MongoDB Error:", err));
-
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
 
 // Signup 
 app.post("signup", async (req, res) => {
   try {
     const { name, age, email,mobile,address,aadharCardNumber,password,role,isVoted } = req.body;
+    
+    const checkaadhar=await User.findOne({aadharCardNumber});
+    if(checkaadhar){
+      return res.status(400).json({message:"User allready exists."});
+    }
+
     const newUser = new User({ name, age, email,mobile,address,aadharCardNumber,password,role,isVoted });
     await newUser.save();
     res.status(201).json({ message: "User saved successfully!" });
@@ -69,7 +61,7 @@ app.get('/profile'.jwtAuthMiddleware,async(req,res)=>{
     try{
         const userData=req.user;
         const userId=userData.id;
-        const user=await User.findById(userId);
+        const user=await User.findById(userId).select("-password");
         res.status(2000).json({user});
     }catch(err){
         console.log(err);
@@ -83,7 +75,7 @@ app.get('/profile'.jwtAuthMiddleware,async(req,res)=>{
 
 
 // UPDATE
-app.put("/profile/password", async (req, res) => {
+app.put("/profile/password", jwtAuthMiddleware,async (req, res) => {
   try {
          const userId=req.user;
 
@@ -107,8 +99,6 @@ app.put("/profile/password", async (req, res) => {
     res.status(500).json({ error: "Failed to update feedback" });
   }
 });
-
-
 
 
 

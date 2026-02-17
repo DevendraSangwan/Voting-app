@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt=require("bcrypt");
+
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -20,7 +22,7 @@ const userSchema = new mongoose.Schema({
     required:true
   },
   aadharCardNumber:{
-    type:Number,
+    type:String,
     required:true,
     unique:true
   },
@@ -38,6 +40,7 @@ const userSchema = new mongoose.Schema({
     default:false
   }  
 });
+
 
 userSchema.pre('save',async function (next) {
     const user=this;
