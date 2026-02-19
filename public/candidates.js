@@ -2,9 +2,16 @@ const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 const candidateListEl = document.getElementById('candidate-list');
 const adminSection = document.getElementById('admin-section');
 
+//first login 
+if(!currentUser){
+    alert("Please login first!");
+    window.location.href = "login.html";
+}else{
+
 // Show admin section if role is admin
-if(currentUser.role === "admin"){
+   if(currentUser.role === "admin"){
     adminSection.style.display = "block";
+}
 }
 
 // Load all candidates
@@ -34,7 +41,7 @@ function loadCandidates(){
                 }
 
                 // Voter: add vote radio button if not voted
-                if(currentUser.role === "voter" && currentUser.isVoted === "No"){
+                if(currentUser.role === "voter" && currentUser.isVoted === false){
                     const voteRadio = document.createElement('input');
                     voteRadio.type = 'radio';
                     voteRadio.name = 'vote';
@@ -47,7 +54,7 @@ function loadCandidates(){
             });
 
             // Voter vote button
-            if(currentUser.role === "voter" && currentUser.isVoted === "No"){
+            if(currentUser.role === "voter" && currentUser.isVoted === false){
                 const voteBtn = document.createElement('button');
                 voteBtn.textContent = 'Submit Vote';
                 voteBtn.onclick = submitVote;
@@ -108,7 +115,7 @@ function submitVote(){
     const selected = document.querySelector('input[name="vote"]:checked');
     if(!selected) return alert("Select a candidate");
 
-    fetch('http://localhost:5000/vote', {
+    fetch('http://localhost:5000/cansdidates', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({voterId: currentUser._id, candidateId: selected.value})
@@ -116,7 +123,7 @@ function submitVote(){
     .then(res => res.json())
     .then(data => {
         alert(data.message || 'Vote submitted');
-        currentUser.isVoted = "Yes";
+        currentUser.isVoted = true;
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         loadCandidates();
     });

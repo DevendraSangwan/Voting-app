@@ -79,7 +79,7 @@ router.get('/profile',jwtAuthMiddleware,async(req,res)=>{
 // UPDATE
 router.put("/profile/password", jwtAuthMiddleware,async (req, res) => {
   try {
-         const userId=req.user;
+         const userId=req.user.id;
 
         const {currentPassword,newPassword}=req.body;
 
@@ -93,9 +93,7 @@ router.put("/profile/password", jwtAuthMiddleware,async (req, res) => {
 
      user.password=newPassword;
      await user.save();
-
-
-    console.log("Password updated");
+     console.log("Password updated");
     res.json({ message: "Password updated successfully!" });
   } catch (error) {
     res.status(500).json({ error: "Failed to update feedback" });

@@ -17,9 +17,8 @@ if(user){
 }
 
 // Logout functionality
-document.getElementById('logoutBtn').addEventListener('click', () => {
-    localStorage.removeItem('currentUser');
-    window.location.href = 'login.html';
+document.getElementById('goCandidatesBtn').addEventListener('click', () => {
+    window.location.href = 'candidates.html';
 });
 
 // Change Password 
@@ -38,12 +37,13 @@ document.getElementById('changePasswordForm').addEventListener('submit', (e) => 
     }
 
     fetch('http://localhost:5000/profile/password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+         },
         body: JSON.stringify({
-            aadharCardNumber: user.aadharCardNumber,
-            oldPassword,
-            newPassword
+          currentPassword: oldPassword,
+           newPassword: newPassword
         })
     })
     .then(res => res.json())

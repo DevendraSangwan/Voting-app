@@ -25,8 +25,8 @@ document.getElementById('signupForm').addEventListener('submit', (e) => {
     .then(data => {
         document.getElementById('signup-message').textContent = data.message;
         if(data.success){
-            document.getElementById('signup-section').style.display = 'none';
-            document.getElementById('login-section').style.display = 'block';
+            alert("Signup successful! Please login.");
+            window.location.href = "/login.html";
         }
     });
 });

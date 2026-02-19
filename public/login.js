@@ -15,12 +15,11 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
 
         if(data.success){
             msg.style.color = 'green';
-            msg.textContent = "Login successful! Redirecting to voting page...";
+            msg.textContent = "Login successful! Redirecting to profile  page...";
             localStorage.setItem('currentUser', JSON.stringify(data.user));
-
-            setTimeout(() => {
-                window.location.href = 'vote.html'; // Redirect to voting page
-            }, 1500);
+            localStorage.setItem('token', data.token);  
+            window.location.href = '/profile.html'; // Redirect to profile page
+          
         } else {
             msg.style.color = 'red';
             msg.textContent = data.message || "Aadhar or password is incorrect!";
