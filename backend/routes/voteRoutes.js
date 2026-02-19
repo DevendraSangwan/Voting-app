@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const Candidate = require("../models/candidate");
-const { jwtAuthMiddleware } = require("../config/jwt");
+const { jwtAuthMiddleware } = require('../middleware/authMiddleware');
 
 
 // VOTING PROCESS-

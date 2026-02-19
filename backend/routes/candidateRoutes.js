@@ -3,13 +3,23 @@ const router = express.Router();
 const cors = require("cors");
 
 const Candidate = require("../models/candidate");
-const {jwtAuthMiddleware}=require("../config/jwt");
+const { jwtAuthMiddleware } = require('../middleware/authMiddleware');
 const adminMiddleware=require("../middleware/adminMiddleware");
 
 
 
 router.use(cors());
 router.use(express.json());
+
+// Get all candidates
+router.get("/", async(req,res)=>{
+    try{
+        const candidates = await Candidate.find();
+        res.status(200).json(candidates);
+    }catch(err){
+        res.status(500).json({message:"Error fetching candidates"});
+    }
+});
 
 //Mkaing new candidate buy admin only
 router.post("/candidates",jwtAuthMiddleware, adminMiddleware,async(req,res)=>{

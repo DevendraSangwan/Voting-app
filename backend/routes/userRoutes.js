@@ -1,8 +1,8 @@
 const express = require("express");
 const router=express.Router();
 const User = require("../models/user");
-const jwtAuthMiddleware = require("../middleware/authMiddleware");
-const { generateToken } = require("../config/jwt");
+const {jwtAuthMiddleware} = require("../middleware/authMiddleware");
+const { generateToken } = require('../middleware/authMiddleware');
 
 // router.use(cors());
 router.use(express.json());
@@ -51,7 +51,9 @@ router.post("/login", async (req, res) => {
         id:user.id
     }
     const token=generateToken(payload);
-    res.json({token});
+    res.json({ success:true,
+   user:user,
+   token:token});
 } catch (error) {
     res.status(500).json({ error: "Failed to fetch User" });
   }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Management</title>
+    <link rel="stylesheet" href="candidates.css">
+</head>
+<body>
+    <h2>Candidate Management</h2>
+
+    <!-- Admin Add Candidate Form -->
+    <div id="admin-section" style="display:none;">
+        <h3>Add New Candidate</h3>
+        <input type="text" id="candidate-name" placeholder="Candidate Name">
+        <button id="addCandidateBtn">Add Candidate</button>
+    </div>
+
+    <!-- Candidate List -->
+    <h3>All Candidates</h3>
+    <ul id="candidate-list"></ul>
+
+    <button id="backBtn">Back to Profile</button>
+
+    <script src="candidates.js"></script>
+</body>
+</html>

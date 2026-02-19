@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Voting App</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <h2>My Profile</h2>
+
+  <div id="profile-section">
+    <!-- User Details -->
+    <p><strong>Name:</strong> <span id="profile-name"></span></p>
+    <p><strong>Age:</strong> <span id="profile-age"></span></p>
+    <p><strong>Email:</strong> <span id="profile-email"></span></p>
+    <p><strong>Mobile:</strong> <span id="profile-mobile"></span></p>
+    <p><strong>Address:</strong> <span id="profile-address"></span></p>
+    <p><strong>Aadhar Number:</strong> <span id="profile-aadhar"></span></p>
+    <p><strong>Role:</strong> <span id="profile-role"></span></p>
+    <p><strong>Voted:</strong> <span id="profile-isVoted"></span></p>
+
+    <!-- Change Password Form -->
+    <h3>Change Password</h3>
+    <form id="changePasswordForm">
+        <input type="password" id="oldPassword" placeholder="Enter Current Password" required><br><br>
+        <input type="password" id="newPassword" placeholder="Enter New Password" required><br><br>
+        <input type="password" id="confirmPassword" placeholder="Confirm New Password" required><br><br>
+        <button type="submit">Change Password</button>
+    </form>
+    <p id="password-message"></p>
+
+    <!-- Logout Button -->
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
