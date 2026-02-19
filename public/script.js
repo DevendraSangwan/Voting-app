@@ -1,6 +1,6 @@
 let currentUser = null;
 
-// --- Signup ---
+// Signup 
 document.getElementById('signupForm').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -31,7 +31,7 @@ document.getElementById('signupForm').addEventListener('submit', (e) => {
     });
 });
 
-// --- Login ---
+// Login 
 document.getElementById('loginBtn').addEventListener('click', () => {
     const aadhar = document.getElementById('login-aadhar').value;
     const password = document.getElementById('login-password').value;
@@ -55,7 +55,7 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     });
 });
 
-// --- Load Candidates ---
+// Load Candidates 
 function loadCandidates() {
     fetch('http://localhost:5000/candidates')
         .then(res => res.json())
@@ -70,7 +70,7 @@ function loadCandidates() {
         });
 }
 
-// --- Submit Vote ---
+//  Submit Vote 
 document.getElementById('voteBtn').addEventListener('click', () => {
     if(currentUser.isVoted === true){
         alert("You have already voted!");
@@ -91,12 +91,12 @@ document.getElementById('voteBtn').addEventListener('click', () => {
     .then(res => res.json())
     .then(data => {
         document.getElementById('vote-msg').textContent = data.message;
-        currentUser.isVoted = "true"; // prevent multiple votes
+        currentUser.isVoted = "true"; 
         loadResults();
     });
 });
 
-// --- Load Results ---
+//  Load Results 
 function loadResults() {
     fetch('http://localhost:5000/results')
         .then(res => res.json())

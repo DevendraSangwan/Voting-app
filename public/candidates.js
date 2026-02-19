@@ -17,7 +17,7 @@ function loadCandidates(){
                 const li = document.createElement('li');
                 li.textContent = `${c.name} (${c.votes.length} votes)`;
 
-                // Admin: add update/delete buttons
+                // Admin: add /update /delete buttons
                 if(currentUser.role === "admin"){
                     const updateBtn = document.createElement('button');
                     updateBtn.textContent = 'Update';

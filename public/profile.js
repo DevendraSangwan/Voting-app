@@ -22,7 +22,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
     window.location.href = 'login.html';
 });
 
-// Change Password Logic
+// Change Password 
 document.getElementById('changePasswordForm').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -51,7 +51,7 @@ document.getElementById('changePasswordForm').addEventListener('submit', (e) => 
         if(data.success){
             msg.style.color = 'green';
             msg.textContent = "Password changed successfully!";
-            // Optionally clear form
+            // clear form
             document.getElementById('changePasswordForm').reset();
         } else {
             msg.style.color = 'red';

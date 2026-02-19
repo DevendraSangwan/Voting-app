@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     const aadhar = document.getElementById('login-aadhar').value;
     const password = document.getElementById('login-password').value;
 
-    fetch('http://localhost:5000/login', {  // Backend endpoint
+    fetch('http://localhost:5000/login', {  
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ aadharCardNumber: aadhar, password })
@@ -16,7 +16,6 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
         if(data.success){
             msg.style.color = 'green';
             msg.textContent = "Login successful! Redirecting to voting page...";
-            // Store user info locally if needed
             localStorage.setItem('currentUser', JSON.stringify(data.user));
 
             setTimeout(() => {
