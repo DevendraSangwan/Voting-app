@@ -22,7 +22,7 @@ router.get("/", async(req,res)=>{
 });
 
 //Mkaing new candidate buy admin only
-router.post("/candidates",jwtAuthMiddleware, adminMiddleware,async(req,res)=>{
+router.post("/",jwtAuthMiddleware, adminMiddleware,async(req,res)=>{
     try{
          const {name,party,age,votes,voteCount}=req.body;
          const newCandidate=new Candidate({name,party,age,votes,voteCount});
@@ -36,7 +36,7 @@ router.post("/candidates",jwtAuthMiddleware, adminMiddleware,async(req,res)=>{
 });
 
 //Update candidate data only form admin
-router.put("/candidates/:candidateID",jwtAuthMiddleware,adminMiddleware,async(req,res)=>{
+router.put("/:candidateID",jwtAuthMiddleware,adminMiddleware,async(req,res)=>{
     try{
         const updated=await Candidate.findByIdAndUpdate(req.params.candidateID,req.body);
         res.status(200).json({message:"Candidate updated."});
@@ -47,7 +47,7 @@ router.put("/candidates/:candidateID",jwtAuthMiddleware,adminMiddleware,async(re
     }
 });
 
-router.delete("/candidates/:candidateID",jwtAuthMiddleware,adminMiddleware,async(req,res)=>{
+router.delete("/:candidateID",jwtAuthMiddleware,adminMiddleware,async(req,res)=>{
       try{
         await Candidate.findByIdAndDelete(req.params.candidateID);
         res.status(200).json({message:"Candidate delete succesfully."})

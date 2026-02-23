@@ -6,7 +6,7 @@ const { generateToken } = require('../middleware/authMiddleware');
 
 // router.use(cors());
 router.use(express.json());
-router.use(express.static("public"));
+// router.use(express.static("public"));
 
 // Signup 
 router.post("/signup", async (req, res) => {

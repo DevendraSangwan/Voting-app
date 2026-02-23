@@ -18,7 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
             msg.textContent = "Login successful! Redirecting to profile  page...";
             localStorage.setItem('currentUser', JSON.stringify(data.user));
             localStorage.setItem('token', data.token);  
-            window.location.href = '/profile.html'; // Redirect to profile page
+            window.location.href = 'http://127.0.0.1:5000/profile.html'; // Redirect to profile page
           
         } else {
             msg.style.color = 'red';

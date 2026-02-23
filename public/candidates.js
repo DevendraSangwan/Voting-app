@@ -65,13 +65,20 @@ function loadCandidates(){
 
 // Admin: Add candidate
 document.getElementById('addCandidateBtn').addEventListener('click', () => {
-    const name = document.getElementById('candidate-name').value;
-    if(!name) return alert("Enter candidate name");
+   const name = document.getElementById('candidate-name').value;
+const party = document.getElementById('candidate-party').value;
+const age = document.getElementById('candidate-age').value;
+
+if(!name || !party || !age) {
+    return alert("Fill all fields");
+}
 
     fetch('http://localhost:5000/candidates', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name})
+        headers: {'Content-Type': 'application/json',
+            'Authorization':`Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({name,party,age})
     })
     .then(res => res.json())
     .then(data => {
@@ -115,7 +122,7 @@ function submitVote(){
     const selected = document.querySelector('input[name="vote"]:checked');
     if(!selected) return alert("Select a candidate");
 
-    fetch('http://localhost:5000/cansdidates', {
+    fetch('http://localhost:5000/candidates', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({voterId: currentUser._id, candidateId: selected.value})
