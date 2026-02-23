@@ -23,6 +23,7 @@ router.post("/signup", async (req, res) => {
     console.log("User data saved succesfully. ")
     const payload={
         id:newUser.id,
+        role:newUser.role
     }
     console.log(JSON.stringify(payload));
     const token=generateToken(payload);
@@ -48,7 +49,8 @@ router.post("/login", async (req, res) => {
 
     }
     const payload={
-        id:user.id
+        id:user.id,
+        role:user.role
     }
     const token=generateToken(payload);
     res.json({ success:true,

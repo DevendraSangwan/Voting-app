@@ -67,18 +67,19 @@ function loadCandidates(){
 document.getElementById('addCandidateBtn').addEventListener('click', () => {
    const name = document.getElementById('candidate-name').value;
 const party = document.getElementById('candidate-party').value;
-const age = document.getElementById('candidate-age').value;
+const age = parseInt(document.getElementById('candidate-age').value);
 
 if(!name || !party || !age) {
     return alert("Fill all fields");
 }
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     fetch('http://localhost:5000/candidates', {
         method: 'POST',
         headers: {'Content-Type': 'application/json',
             'Authorization':`Bearer ${localStorage.getItem("token")}`
         },
-        body: JSON.stringify({name,party,age})
+        body: JSON.stringify({name,party,age, role:currentUser.role})
     })
     .then(res => res.json())
     .then(data => {
@@ -95,7 +96,9 @@ function updateCandidate(id){
 
     fetch(`http://localhost:5000/candidates/${id}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
+        },
         body: JSON.stringify({name: newName})
     })
     .then(res => res.json())
@@ -109,7 +112,12 @@ function updateCandidate(id){
 function deleteCandidate(id){
     if(!confirm("Are you sure?")) return;
 
-    fetch(`http://localhost:5000/candidates/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:5000/candidates/${id}`, {
+         method: 'DELETE', 
+          headers: {
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
+    }
+        })
         .then(res => res.json())
         .then(data => {
             alert(data.message || 'Candidate deleted');
