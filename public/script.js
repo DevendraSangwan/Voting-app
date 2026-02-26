@@ -25,8 +25,11 @@ document.getElementById('signupForm').addEventListener('submit', (e) => {
     .then(data => {
         document.getElementById('signup-message').textContent = data.message;
         if(data.success){
-            alert("Signup successful! Please login.");
-            window.location.href = "/login.html";
+            document.getElementById('signup-message').textContent = data.message;
+            alert("Signup successful! Please login now...");
+             document.getElementById('signup-section').style.display = "none";
+    // document.getElementById('login-section').style.display = "block";
+            window.location = "/login.html";
         }
     });
 });

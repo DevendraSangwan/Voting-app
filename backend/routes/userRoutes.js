@@ -29,7 +29,15 @@ router.post("/signup", async (req, res) => {
     const token=generateToken(payload);
     console.log("Token is",token);
 
-    res.status(200).json({user:newUser,token:token});
+    res.status(200).json({
+      user:newUser,
+      token:token,
+      success:true,
+      message:'User data saved successfully.',
+      id:newUser.id,
+      role:newUser.role,
+    
+    });
 
   } catch (err) {
     console.log(err);
