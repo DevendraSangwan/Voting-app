@@ -16,20 +16,26 @@ document.getElementById('signupForm').addEventListener('submit', (e) => {
         isVoted: false
     };
 
-    fetch('http://localhost:5000/signup', {
+    fetch('/signup', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+
+         },
         body: JSON.stringify(userData)
     })
     .then(res => res.json())
     .then(data => {
         document.getElementById('signup-message').textContent = data.message;
         if(data.success){
+            currentUser = data.user;
+            localStorage.setItem("token", data.token);
             document.getElementById('signup-message').textContent = data.message;
             alert("Signup successful! Please login now...");
              document.getElementById('signup-section').style.display = "none";
-        //   document.getElementById('login-section').style.display = "block";
-            window.location = "/login.html";
+        //    document.getElementById('login-section').style.display = "block";
+            window.location.href = "/login.html";
+             loadCandidates();
+           loadResults();
         }
     });
 });
@@ -39,7 +45,7 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     const aadhar = document.getElementById('login-aadhar').value;
     const password = document.getElementById('login-password').value;
 
-    fetch('http://localhost:5000/login', {
+    fetch('/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ aadharCardNumber: aadhar, password })
@@ -60,7 +66,7 @@ document.getElementById('loginBtn').addEventListener('click', () => {
 
 // Load Candidates 
 function loadCandidates() {
-    fetch('http://localhost:5000/candidates')
+    fetch('/candidates')
         .then(res => res.json())
         .then(candidates => {
             const list = document.getElementById('candidate-list');
@@ -83,7 +89,7 @@ document.getElementById('voteBtn').addEventListener('click', () => {
     const selected = document.querySelector('input[name="vote"]:checked');
     if(!selected) { alert('Select a candidate!'); return; }
    console.log(localStorage.getItem("token"));
-  fetch(`http://localhost:5000/vote/${selected.value}`,{
+  fetch(`/vote/${selected.value}`,{
    method:'POST',
    headers:{
       'Content-Type':'application/json',
@@ -101,7 +107,7 @@ document.getElementById('voteBtn').addEventListener('click', () => {
 
 //  Load Results 
 function loadResults() {
-    fetch('http://localhost:5000/results')
+    fetch('/results')
         .then(res => res.json())
         .then(results => {
             const list = document.getElementById('results-list');

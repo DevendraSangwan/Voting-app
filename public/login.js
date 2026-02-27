@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     const aadhar = document.getElementById('login-aadhar').value;
     const password = document.getElementById('login-password').value;
 
-    fetch('http://localhost:5000/login', {  
+    fetch('/login', {  
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ aadharCardNumber: aadhar, password })
@@ -18,7 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
             msg.textContent = "Login successful! Redirecting to profile  page...";
             localStorage.setItem('currentUser', JSON.stringify(data.user));
             localStorage.setItem('token', data.token);  
-            window.location.href = 'http://127.0.0.1:5000/profile.html'; // Redirect to profile page
+            window.location.href = '/profile.html'; // Redirect to profile page
           
         } else {
             msg.style.color = 'red';

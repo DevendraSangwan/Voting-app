@@ -16,7 +16,7 @@ if(!currentUser){
 
 // Load all candidates
 function loadCandidates(){
-    fetch('http://localhost:5000/candidates')
+    fetch('/candidates')
         .then(res => res.json())
         .then(candidates => {
             candidateListEl.innerHTML = '';
@@ -74,7 +74,7 @@ if(!name || !party || !age) {
 }
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    fetch('http://localhost:5000/candidates', {
+    fetch('/candidates', {
         method: 'POST',
         headers: {'Content-Type': 'application/json',
             'Authorization':`Bearer ${localStorage.getItem("token")}`
@@ -94,7 +94,7 @@ function updateCandidate(id){
     const newName = prompt("Enter new name:");
     if(!newName) return;
 
-    fetch(`http://localhost:5000/candidates/${id}`, {
+    fetch(`/candidates/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -112,7 +112,7 @@ function updateCandidate(id){
 function deleteCandidate(id){
     if(!confirm("Are you sure?")) return;
 
-    fetch(`http://localhost:5000/candidates/${id}`, {
+    fetch(`/candidates/${id}`, {
          method: 'DELETE', 
           headers: {
         'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -130,7 +130,7 @@ function submitVote(){
     const selected = document.querySelector('input[name="vote"]:checked');
     if(!selected) return alert("Select a candidate");
 
-    fetch(`http://localhost:5000/vote/${selected.value}`, {
+    fetch(`/vote/${selected.value}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json',
                  'Authorization': `Bearer ${localStorage.getItem("token")}`
