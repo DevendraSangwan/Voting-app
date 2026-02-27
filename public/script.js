@@ -28,7 +28,7 @@ document.getElementById('signupForm').addEventListener('submit', (e) => {
             document.getElementById('signup-message').textContent = data.message;
             alert("Signup successful! Please login now...");
              document.getElementById('signup-section').style.display = "none";
-    // document.getElementById('login-section').style.display = "block";
+        //   document.getElementById('login-section').style.display = "block";
             window.location = "/login.html";
         }
     });
@@ -82,13 +82,13 @@ document.getElementById('voteBtn').addEventListener('click', () => {
 
     const selected = document.querySelector('input[name="vote"]:checked');
     if(!selected) { alert('Select a candidate!'); return; }
-
+   console.log(localStorage.getItem("token"));
   fetch(`http://localhost:5000/vote/${selected.value}`,{
    method:'POST',
    headers:{
       'Content-Type':'application/json',
-      'Authorization':'Bearer '+localStorage.getItem("token")
-   }
+     'Authorization': `Bearer ${localStorage.getItem("token")}`
+    }
 })
 
     .then(res => res.json())

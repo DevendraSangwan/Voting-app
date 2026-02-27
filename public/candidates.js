@@ -130,9 +130,13 @@ function submitVote(){
     const selected = document.querySelector('input[name="vote"]:checked');
     if(!selected) return alert("Select a candidate");
 
-    fetch('http://localhost:5000/candidates', {
+    fetch(`http://localhost:5000/vote/${selected.value}`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json',
+                 'Authorization': `Bearer ${localStorage.getItem("token")}`
+
+        },
+
         body: JSON.stringify({voterId: currentUser._id, candidateId: selected.value})
     })
     .then(res => res.json())
