@@ -63,6 +63,17 @@ li button:hover {
     cursor: pointer;
 }
 
+#goToLogin {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 #backBtn:hover {
     background: #c0392b;
 }

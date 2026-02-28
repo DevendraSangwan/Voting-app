@@ -152,5 +152,9 @@ function submitVote(){
 document.getElementById('backBtn').addEventListener('click', () => {
     window.location.href = 'profile.html';
 });
+//login page button
+document.getElementById("goToLogin").addEventListener("click", function() {
+    window.location.href = "/login.html";  
+});
 
 loadCandidates();
