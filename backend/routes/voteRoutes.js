@@ -28,6 +28,10 @@ router.post("/:candidateID", jwtAuthMiddleware, async (req, res) => {
     if (!candidate) {
       return res.status(400).json({ message: "Candidate not found" });
     }
+    candidate.votes.push({
+      user:userId
+    })
+
     candidate.voteCount += 1;
     await candidate.save();
     
