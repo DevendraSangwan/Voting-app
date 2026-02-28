@@ -12,6 +12,9 @@ app.use(cors());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static("public"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/index.html"));
+});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("User DB Connected"))
