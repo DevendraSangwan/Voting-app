@@ -1,6 +1,9 @@
 let currentUser = null;
 
-// Signup 
+document.getElementById("goToLogin").addEventListener("click", function() {
+    window.location.href = "/login.html";  
+}); 
+    // Signup 
 document.getElementById('signupForm').addEventListener('submit', (e) => {
     e.preventDefault();
 
