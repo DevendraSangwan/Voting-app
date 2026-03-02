@@ -1,31 +1,71 @@
+/* Import Modern Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
+    min-height: 100vh;
 }
 
+/* Headings */
 h2, h3 {
-    color: #2c3e50;
+    color: white;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
+/* Admin Section Card */
 #admin-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    width: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#admin-section input, #admin-section button {
+#admin-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Inputs & Buttons inside Admin */
+#admin-section input,
+#admin-section button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
+#admin-section input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102,126,234,0.4);
+}
+
+/* Primary Buttons */
+#admin-section button {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#admin-section button:hover {
+    transform: scale(1.05);
+}
+
+/* Candidate List */
 ul {
     list-style: none;
     padding: 0;
@@ -33,47 +73,55 @@ ul {
 }
 
 li {
-    background: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
+li:hover {
+    transform: translateX(5px);
+    background: #f8f9ff;
+}
+
+/* Small Buttons inside List */
 li button {
-    margin-left: 10px;
-    padding: 5px 8px;
+    padding: 6px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 13px;
+    background: #ff7675;
+    color: white;
+    transition: 0.3s ease;
 }
 
 li button:hover {
-    opacity: 0.8;
+    background: #d63031;
+    transform: scale(1.05);
 }
 
-#backBtn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/* Back & Go To Login Buttons */
+#backBtn,
 #goToLogin {
     margin-top: 20px;
-    padding: 10px 20px;
-    background: #e74c3c;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff6a00, #ee0979);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-
-#backBtn:hover {
-    background: #c0392b;
+#backBtn:hover,
+#goToLogin:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }

@@ -1,71 +1,96 @@
+/* Import Modern Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
     padding: 20px;
 }
 
+/* Headings */
 h2, h3 {
-    color: #2c3e50;
+    color: white;
     text-align: center;
     margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
+/* Profile Card */
 #profile-section {
-    background: #fff;
-    padding: 25px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     width: 350px;
-    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+#profile-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Profile Text */
 #profile-section p {
-    font-size: 16px;
+    font-size: 15px;
     margin: 8px 0;
+    color: #2c3e50;
 }
 
+/* Inputs & Buttons */
 input, button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    border: 1px solid #ddd;
     font-size: 14px;
+    transition: all 0.3s ease;
 }
 
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102,126,234,0.4);
+}
+
+/* Primary Button */
 button {
-    background-color: #3498db;
+    background: linear-gradient(45deg, #667eea, #764ba2);
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    transform: scale(1.05);
 }
 
+/* Logout Button */
 #logoutBtn {
-    background-color: #e74c3c;
-    margin-top: 15px;
+    background: linear-gradient(45deg, #ff6a00, #ee0979);
+    margin-top: 10px;
 }
 
 #logoutBtn:hover {
-    background-color: #c0392b;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
+/* Password Message */
 #password-message {
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
+    color: #00ffae;
 }
