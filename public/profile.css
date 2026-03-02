@@ -1,6 +1,14 @@
 /* Import Modern Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body */
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #667eea, #764ba2);
@@ -9,15 +17,13 @@ body {
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
     padding: 20px;
 }
 
-/* Headings */
-h2, h3 {
+/* Heading */
+h2 {
     color: white;
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     letter-spacing: 1px;
 }
 
@@ -27,7 +33,7 @@ h2, h3 {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    width: 350px;
+    width: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +50,23 @@ h2, h3 {
     font-size: 15px;
     margin: 8px 0;
     color: #2c3e50;
+    width: 100%;
+}
+
+#profile-section strong {
+    color: #34495e;
+}
+
+/* Sub Heading */
+h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Form */
+form {
+    width: 100%;
 }
 
 /* Inputs & Buttons */
@@ -57,6 +80,7 @@ input, button {
     transition: all 0.3s ease;
 }
 
+/* Input Focus */
 input:focus {
     outline: none;
     border-color: #667eea;
@@ -76,21 +100,69 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Logout Button */
-#logoutBtn {
-    background: linear-gradient(45deg, #ff6a00, #ee0979);
-    margin-top: 10px;
-}
-
-#logoutBtn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
 /* Password Message */
 #password-message {
     font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
-    color: #00ffae;
+    color: #00c896;
+}
+
+/* -------------------------- */
+/* 📱 Responsive Media Queries */
+/* -------------------------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    #profile-section {
+        width: 320px;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    #profile-section p {
+        font-size: 14px;
+    }
+
+    input, button {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    #profile-section {
+        width: 95%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    #profile-section p {
+        font-size: 13px;
+        margin: 6px 0;
+    }
+
+    input, button {
+        padding: 9px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
 }
