@@ -1,6 +1,7 @@
 /* Import Modern Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+
 /* Reset */
 * {
     box-sizing: border-box;
@@ -165,4 +166,60 @@ button:hover {
         font-size: 12px;
         border-radius: 6px;
     }
+}
+/* Fix for Home Button */
+
+#home-btn {
+    position: fixed;
+    top: 20px;
+    right: 250px;
+
+    width: auto !important;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+
+    border-radius: 8px 0 0 8px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+
+    box-shadow: -4px 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+#home-btn:hover {
+    transform: translateX(-5px);
+}
+/* =============================== */
+/* Right Corner Toggle Button     */
+/* =============================== */
+
+.corner-right-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+
+    width: auto !important;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+
+    border-radius: 8px 0 0 8px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+
+    box-shadow: -4px 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+.corner-right-btn:hover {
+    transform: translateX(-5px);
 }

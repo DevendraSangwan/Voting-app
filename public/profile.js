@@ -16,9 +16,24 @@ if(user){
     window.location.href = 'login.html';
 }
 
-// Logout functionality
+// buttons  functionality
 document.getElementById('goCandidatesBtn').addEventListener('click', () => {
     window.location.href = 'candidates.html';
+});
+document.getElementById('home-btn').addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+const toggleBtn = document.getElementById("togglePasswordBtn");
+const passwordForm = document.getElementById("changePasswordForm");
+
+toggleBtn.addEventListener("click", () => {
+    if (passwordForm.style.display === "none") {
+        passwordForm.style.display = "block";
+        toggleBtn.textContent = "Hide Password Form";
+    } else {
+        passwordForm.style.display = "none";
+        toggleBtn.textContent = "Change Password";
+    }
 });
 
 // Change Password 
@@ -60,3 +75,4 @@ document.getElementById('changePasswordForm').addEventListener('submit', (e) => 
     })
     .catch(err => console.error(err));
 });
+

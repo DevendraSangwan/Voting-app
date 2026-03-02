@@ -153,8 +153,8 @@ document.getElementById('backBtn').addEventListener('click', () => {
     window.location.href = 'profile.html';
 });
 //login page button
-document.getElementById("goToLogin").addEventListener("click", function() {
-    window.location.href = "/login.html";  
+document.getElementById("goToHome").addEventListener("click", function() {
+    window.location.href = "/index.html";  
 });
 
 loadCandidates();

@@ -7,8 +7,13 @@
   <link rel="stylesheet" href="profile.css">
 </head>
 <body>
+      <button id="home-btn">Home page</button>
+<button id="togglePasswordBtn" class="corner-right-btn">
+  Change Password
+</button>
   <h2>My Profile</h2>
 
+   
   <div id="profile-section" >
     <!-- User Details -->
     <p><strong>Name:</strong> <span id="profile-name"></span></p>
@@ -21,8 +26,8 @@
     <p><strong>Voted:</strong> <span id="profile-isVoted"></span></p>
 
     <!-- Change Password Form -->
-    <h3>Change Password</h3>
-    <form id="changePasswordForm">
+    <form id="changePasswordForm" style="display: none;">
+          <h3>Change Password</h3>
         <input type="password" id="oldPassword" placeholder="Enter Current Password" required><br><br>
         <input type="password" id="newPassword" placeholder="Enter New Password" required><br><br>
         <input type="password" id="confirmPassword" placeholder="Confirm New Password" required><br><br>

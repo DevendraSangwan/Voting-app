@@ -108,7 +108,7 @@ li button:hover {
 
 /* Back & Go To Login Buttons */
 #backBtn,
-#goToLogin {
+#goToHome {
     margin-top: 20px;
     padding: 12px 25px;
     background: linear-gradient(45deg, #ff6a00, #ee0979);
