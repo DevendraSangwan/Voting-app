@@ -1,59 +1,163 @@
-/* General body styling */
+/* Import Modern Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body */
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 100vh;
-    margin: 0;
     padding: 20px;
 }
 
-/* Page heading */
+/* Heading */
 h2 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
 }
 
-/* Login form styling */
+/* Login Card */
 #login-section {
-    background: #fff;
-    padding: 25px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+#login-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Form */
+form {
+    width: 100%;
+}
+
+/* Inputs & Buttons */
 input, button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    border: 1px solid #ddd;
     font-size: 14px;
+    transition: all 0.3s ease;
 }
 
+/* Input Focus */
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102,126,234,0.4);
+}
+
+/* Primary Button */
 button {
-    background-color: #3498db;
+    background: linear-gradient(45deg, #667eea, #764ba2);
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    transform: scale(1.05);
 }
 
-/* Message styling */
+/* Message */
 #login-message {
-    font-weight: bold;
-    margin-top: 10px;
+    font-weight: 600;
     text-align: center;
+    margin-top: 10px;
+}
+
+/* =============================== */
+/* Right Corner Home Button       */
+/* =============================== */
+
+#home-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: auto !important;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+#home-btn:hover {
+    transform: scale(1.05);
+}
+
+/* -------------------------- */
+/* 📱 Responsive Media Queries */
+/* -------------------------- */
+
+@media (max-width: 768px) {
+
+    #login-section {
+        width: 320px;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    input, button {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    #login-section {
+        width: 95%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, button {
+        padding: 9px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
 }

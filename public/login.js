@@ -27,3 +27,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     })
     .catch(err => console.error('Login error:', err));
 });
+
+document.getElementById('home-btn').addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
