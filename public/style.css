@@ -54,7 +54,7 @@ input, select, button {
     align-items: center;
     width: 100%;
     padding: 10px 2px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     margin-right: 50px;
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -76,6 +76,7 @@ button {
     cursor: pointer;
     font-weight: 600;
     letter-spacing: 0.5px;
+    
 }
 
 button:hover {
@@ -134,10 +135,14 @@ button:active {
     }
 
     input, select, button {
-        font-size: 14px;
-        padding: 12px 2px;
-        margin-bottom: 15px;
-    }
+    width: 100%;
+    padding: 10px 12px;   /* proper horizontal spacing */
+    margin-bottom: 8px;  /* gap reduce kiya */
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
 
     #candidate-list li,
     #results-list li {

@@ -83,7 +83,10 @@ function loadCandidates() {
 }
 
 //  Submit Vote 
+const voteBtn=document.getElementById('voteBtn');
+voteBtn.style.background="linear-gradient(45deg, #667eea, #764ba2)"
 document.getElementById('voteBtn').addEventListener('click', () => {
+    
     if(currentUser.isVoted === true){
         alert("You have already voted!");
         return;

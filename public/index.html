@@ -13,17 +13,17 @@
     <div id="signup-section">
         <h3>Signup</h3>
         <form id="signupForm">
-            <input type="text" id="name" placeholder="Enter Your Name" required><br><br>
-            <input type="number" id="age" placeholder="Enter Your Age" required><br><br>
-            <input type="email" id="email" placeholder="Enter Your Email" required><br><br>
-            <input type="number" id="mobile" placeholder="Enter Your Mobile Number" required><br><br>
-            <input type="text" id="address" placeholder="Enter Your Address" required><br><br>
-            <input type="number" id="aadharCardNumber" placeholder="Enter Your Aadhar Card Number" required><br><br>
-            <input type="password" id="password" placeholder="Enter Your Password" required><br><br>
+            <input type="text" id="name" placeholder="Enter Your Name" required>
+            <input type="number" id="age" placeholder="Enter Your Age" required>
+            <input type="email" id="email" placeholder="Enter Your Email" required>
+            <input type="number" id="mobile" placeholder="Enter Your Mobile Number" required>
+            <input type="text" id="address" placeholder="Enter Your Address" required>
+            <input type="number" id="aadharCardNumber" placeholder="Enter Your Aadhar Card Number" required>
+            <input type="password" id="password" placeholder="Enter Your Password" required>
             <select id="role">
                 <option value="voter">Voter</option>
                 <!-- <option value="admin">Admin</option> -->
-            </select><br><br>
+            </select>
             <button type="submit">Signup</button>
             <button id="goToLogin">Login</button>
 
@@ -31,20 +31,12 @@
         <p id="signup-message"></p>
     </div>
 
-    <!-- Login Form -->
-    <div id="login-section" style="display:none;">
-        <h3>Login</h3>
-        <input type="number" id="login-aadhar" placeholder="Enter Aadhar Number" required><br><br>
-        <input type="password" id="login-password" placeholder="Enter Password" required><br><br>
-        <button id="loginBtn">Login</button>
-        <p id="login-message"></p>
-    </div>
-
+    
     <!-- Voting Section -->
     <div id="vote-section" style="display:none;">
         <h3>Vote for a Candidate</h3>
         <ul id="candidate-list"></ul>
-        <button id="voteBtn">Submit Vote</button>
+        <button id="voteBtn" style="background: linear-gradient(45deg, #667eea, #764ba2);" >Submit Vote</button>
         <p id="vote-msg"></p>
         <h3>Results</h3>
         <ul id="results-list"></ul>
