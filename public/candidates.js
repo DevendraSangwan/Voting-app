@@ -57,6 +57,15 @@ function loadCandidates(){
             if(currentUser.role === "voter" && currentUser.isVoted === false){
                 const voteBtn = document.createElement('button');
                 voteBtn.textContent = 'Submit Vote';
+                voteBtn.style.marginTop = "20px";
+                voteBtn.style.padding = "12px 25px";
+                voteBtn.style.background = "linear-gradient(45deg, #ff6a00, #ee0979)";
+                voteBtn.style.color = "white";
+                voteBtn.style.border = "none";
+                voteBtn.style.borderRadius = "25px";
+                voteBtn.style.cursor = "pointer";
+                voteBtn.style.fontWeight = "600";
+                voteBtn.style.transition = "all 0.3s ease";
                 voteBtn.onclick = submitVote;
                 candidateListEl.appendChild(voteBtn);
             }
